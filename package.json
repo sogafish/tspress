@@ -7,6 +7,8 @@
     "start": "nodemon",
     "tsoa": "tsoa spec-and-routes",
     "lint": "eslint src",
+    "migrate:generate": "ts-node $(npm bin)/typeorm migration:generate -n",
+    "migrate:run": "ts-node $(npm bin)/typeorm migration:run",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,7 +30,9 @@
     "@types/swagger-ui-express": "^4.1.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "swagger-ui-express": "^4.1.4",
+    "ts-node": "^8.10.2",
     "tsoa": "^3.0.8",
     "typeorm": "^0.2.25"
   }
