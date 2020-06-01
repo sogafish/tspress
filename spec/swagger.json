@@ -6,7 +6,7 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"IUser": {
+			"User": {
 				"properties": {
 					"id": {
 						"type": "number",
@@ -49,7 +49,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/users/{userId}": {
+		"/users": {
 			"get": {
 				"operationId": "GetUser",
 				"responses": {
@@ -57,7 +57,18 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IUser"
+									"properties": {
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/User"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
 								}
 							}
 						},
@@ -65,25 +76,7 @@
 					}
 				},
 				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "userId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "query",
-						"name": "name",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
+				"parameters": []
 			}
 		}
 	},

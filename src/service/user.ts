@@ -1,13 +1,15 @@
-// import { IUser } from '../model/user';
+import { connection } from '../db';
+import { User } from '../entities/User'
 
 export class UserService {
-  public get(_id: number, _name?: string) {
+  public async getAll() {
+    const connect= await connection();
+    const userRepository = connect.getRepository(User);
+    const allUser = await userRepository.find();
+    await connect.close();
+
     return {
-      id: 1,
-      email: 'email',
-      name: 'name',
-      age: 20,
-      status: 1,
+      data: allUser,
     };
   }
 }
